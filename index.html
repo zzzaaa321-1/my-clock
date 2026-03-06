@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript 实时时钟</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-clock"></i> TypeScript 实时时钟</h1>
+            <p class="subtitle">一个使用 TypeScript 构建的现代化实时时钟</p>
+        </header>
+
+        <main>
+            <div class="clock-container">
+                <div class="clock-face">
+                    <div class="clock-digital" id="digital-clock">
+                        <span class="time-part hours">00</span>
+                        <span class="time-separator">:</span>
+                        <span class="time-part minutes">00</span>
+                        <span class="time-separator">:</span>
+                        <span class="time-part seconds">00</span>
+                        <span class="time-period">AM</span>
+                    </div>
+                    
+                    <div class="clock-analog">
+                        <div class="analog-face">
+                            <div class="hand hour-hand" id="hour-hand"></div>
+                            <div class="hand minute-hand" id="minute-hand"></div>
+                            <div class="hand second-hand" id="second-hand"></div>
+                            <div class="center-dot"></div>
+                            
+                            <!-- 时钟刻度 -->
+                            <div class="mark mark-12">12</div>
+                            <div class="mark mark-3">3</div>
+                            <div class="mark mark-6">6</div>
+                            <div class="mark mark-9">9</div>
+                            
+                            <!-- 其他刻度 -->
+                            <div class="mark small-mark mark-1"></div>
+                            <div class="mark small-mark mark-2"></div>
+                            <div class="mark small-mark mark-4"></div>
+                            <div class="mark small-mark mark-5"></div>
+                            <div class="mark small-mark mark-7"></div>
+                            <div class="mark small-mark mark-8"></div>
+                            <div class="mark small-mark mark-10"></div>
+                            <div class="mark small-mark mark-11"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="date-info" id="date-info">
+                    <div class="date-item">
+                        <i class="fas fa-calendar-day"></i>
+                        <span id="full-date">2023年1月1日</span>
+                    </div>
+                    <div class="date-item">
+                        <i class="fas fa-calendar-week"></i>
+                        <span id="day-of-week">星期一</span>
+                    </div>
+                    <div class="date-item">
+                        <i class="fas fa-sun"></i>
+                        <span id="day-of-year">第1天</span>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button id="theme-toggle" class="btn">
+                        <i class="fas fa-moon"></i> 切换主题
+                    </button>
+                    <button id="format-toggle" class="btn">
+                        <i class="fas fa-exchange-alt"></i> 12/24小时制
+                    </button>
+                    <button id="pause-btn" class="btn">
+                        <i class="fas fa-pause"></i> 暂停
+                    </button>
+                    <button id="timezone-select" class="btn">
+                        <i class="fas fa-globe"></i> 时区: 本地
+                    </button>
+                </div>
+
+                <div class="timezones">
+                    <h3><i class="fas fa-globe-americas"></i> 世界时间</h3>
+                    <div class="timezone-list" id="timezone-list">
+                        <!-- 动态生成的世界时间 -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-panel">
+                <div class="info-card">
+                    <h3><i class="fas fa-info-circle"></i> 项目信息</h3>
+                    <p>这是一个使用 TypeScript 构建的实时时钟应用，展示了：</p>
+                    <ul>
+                        <li>TypeScript 类型安全</li>
+                        <li>DOM 操作和事件处理</li>
+                        <li>CSS 动画和过渡效果</li>
+                        <li>模块化代码结构</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3><i class="fas fa-code"></i> 技术栈</h3>
+                    <div class="tech-stack">
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">ES6+</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>使用 TypeScript 构建 | 更新时间: <span id="update-time">--:--:--</span></p>
+            <p class="copyright">© 2023 TypeScript 时钟项目 | 在 myopencode 中创建</p>
+        </footer>
+    </div>
+
+    <script type="module" src="dist/index.js"></script>
+</body>
+</html>

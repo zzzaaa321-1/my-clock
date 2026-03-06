@@ -1,0 +1,20 @@
+{
+  "name": "ts-clock",
+  "version": "1.0.0",
+  "description": "TypeScript 实时时钟网页",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "dev": "concurrently \"npm run watch\" \"live-server\"",
+    "start": "npm run build && live-server"
+  },
+  "keywords": ["typescript", "clock", "real-time"],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "concurrently": "^8.0.0",
+    "live-server": "^1.2.0"
+  }
+}

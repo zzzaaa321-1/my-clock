@@ -1,0 +1,500 @@
+/* 重置和基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #fff;
+    min-height: 100vh;
+    transition: background 0.5s ease;
+}
+
+body.light-theme {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 头部样式 */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.light-theme header {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, #00dbde, #fc00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    font-weight: 300;
+}
+
+/* 时钟容器 */
+.clock-container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 25px;
+    padding: 30px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+}
+
+.light-theme .clock-container {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.clock-face {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+/* 数字时钟 */
+.clock-digital {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    text-shadow: 0 0 20px rgba(0, 219, 222, 0.5);
+}
+
+.time-part {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px 20px;
+    border-radius: 15px;
+    min-width: 120px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.light-theme .time-part {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.time-separator {
+    font-size: 4rem;
+    opacity: 0.7;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.time-period {
+    font-size: 2rem;
+    margin-left: 10px;
+    opacity: 0.8;
+}
+
+/* 模拟时钟 */
+.clock-analog {
+    width: 300px;
+    height: 300px;
+}
+
+.analog-face {
+    width: 100%;
+    height: 100%;
+    border: 8px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    position: relative;
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 
+        inset 0 0 30px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(0, 219, 222, 0.3);
+}
+
+.light-theme .analog-face {
+    border: 8px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 
+        inset 0 0 30px rgba(0, 0, 0, 0.1),
+        0 0 30px rgba(0, 0, 0, 0.1);
+}
+
+/* 时钟指针 */
+.hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom;
+    border-radius: 10px 10px 0 0;
+}
+
+.hour-hand {
+    width: 8px;
+    height: 80px;
+    background: linear-gradient(to top, #ff7e5f, #feb47b);
+    transform: translateX(-50%);
+}
+
+.minute-hand {
+    width: 6px;
+    height: 110px;
+    background: linear-gradient(to top, #00c6ff, #0072ff);
+    transform: translateX(-50%);
+}
+
+.second-hand {
+    width: 3px;
+    height: 130px;
+    background: linear-gradient(to top, #ff416c, #ff4b2b);
+    transform: translateX(-50%);
+}
+
+.center-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* 时钟刻度 */
+.mark {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.light-theme .mark {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.mark-12 { top: 10px; left: 50%; transform: translateX(-50%); }
+.mark-3 { top: 50%; right: 10px; transform: translateY(-50%); }
+.mark-6 { bottom: 10px; left: 50%; transform: translateX(-50%); }
+.mark-9 { top: 50%; left: 10px; transform: translateY(-50%); }
+
+.small-mark {
+    width: 4px;
+    height: 15px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 2px;
+}
+
+.light-theme .small-mark {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.mark-1 { top: 25px; right: 80px; transform: rotate(30deg); }
+.mark-2 { top: 70px; right: 30px; transform: rotate(60deg); }
+.mark-4 { bottom: 70px; right: 30px; transform: rotate(120deg); }
+.mark-5 { bottom: 25px; right: 80px; transform: rotate(150deg); }
+.mark-7 { bottom: 25px; left: 80px; transform: rotate(210deg); }
+.mark-8 { bottom: 70px; left: 30px; transform: rotate(240deg); }
+.mark-10 { top: 70px; left: 30px; transform: rotate(300deg); }
+.mark-11 { top: 25px; left: 80px; transform: rotate(330deg); }
+
+/* 日期信息 */
+.date-info {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.date-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px 25px;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+.light-theme .date-item {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.date-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.light-theme .date-item:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.date-item i {
+    font-size: 1.5rem;
+    color: #00dbde;
+}
+
+/* 控制按钮 */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(45deg, #00dbde, #fc00ff);
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+}
+
+.btn i {
+    font-size: 1.1rem;
+}
+
+/* 世界时间 */
+.timezones {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.light-theme .timezones {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.timezones h3 {
+    margin-bottom: 15px;
+    color: #00dbde;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.timezone-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.timezone-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.light-theme .timezone-item {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.timezone-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+}
+
+.light-theme .timezone-item:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* 信息面板 */
+.info-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.light-theme .info-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.info-card:hover {
+    transform: translateY(-10px);
+}
+
+.info-card h3 {
+    color: #00dbde;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.info-card li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.light-theme .info-card li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.info-card li:last-child {
+    border-bottom: none;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.tech-tag {
+    background: linear-gradient(45deg, #00dbde, #fc00ff);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* 页脚 */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.light-theme footer {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.copyright {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .clock-digital {
+        font-size: 3.5rem;
+    }
+    
+    .time-part {
+        min-width: 90px;
+        padding: 8px 15px;
+    }
+    
+    .clock-analog {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .date-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .clock-digital {
+        font-size: 2.5rem;
+    }
+    
+    .time-part {
+        min-width: 70px;
+        padding: 6px 12px;
+    }
+    
+    .clock-analog {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .hour-hand { height: 60px; }
+    .minute-hand { height: 85px; }
+    .second-hand { height: 100px; }
+}
